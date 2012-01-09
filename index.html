@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset='utf-8'>
+  <title>diceware passphrase generator</title>
+  <meta name="description" content="">
+  <meta name="author" content="Jesse Printz">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Diceware Passphrase Generator</title>
+  <link rel="stylesheet" type="text/css" href="css/base.css" />
+  <link rel="stylesheet" type="text/css" href="css/skeleton.css" />
+  <link rel="stylesheet" type="text/css" href="css/layout.css" />
 
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+  <script src="js/zepto.min.js"></script>
 
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -22,7 +36,40 @@
 <body>
   <a class="forkme" href="https://github.com/jonypawks/diceware"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
-  <div id="container">
+  <div class="container">
+    <div class="sixteen columns">
+      <h1 class="remove-bottom" style="margin-top: 40px">diceware passphrase generator</h1>
+      <hr />
+    </div>
+
+    <div id="options" class="six columns">
+      <h3>1</h3>
+      <form>
+        <p>I would like <input type="number" min="3" max="10" value="5" name="words" id="words" /> words in my passphrase.</p>
+        <p>
+        <input type="checkbox" name="special" id="special" /><label for="special">Insert a special character.</label>
+        </p>
+        <p><span id="entropy">44</span> bits of entropy</p>
+      </form>
+    </div>
+
+    <div id="button" class="four columns">
+      <h3>2</h3>
+      <button>Generate!</button>
+    </div>
+
+    <div id="results" class="six columns">
+      <h3>3</h3>
+      <pre>some words go here</pre>
+    </div>
+
+    <div id="faq" class="sixteen columns">
+      <h3>faq</h3>
+      <dl>
+        <dt>Wait, diceware told me not to use a computer for this!</dt>
+        <dd>blah blah blah</dd>
+      </dl>
+    </div>
   </div>
 </body>
 </html>
