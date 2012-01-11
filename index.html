@@ -19,8 +19,6 @@
   <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
   <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
-  <script src="js/zepto.min.js"></script>
-
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-27916621-2']);
@@ -38,38 +36,41 @@
 
   <div class="container">
     <div class="sixteen columns">
-      <h1 class="remove-bottom" style="margin-top: 40px">diceware passphrase generator</h1>
+      <h1 class="remove-bottom" style="margin-top: 40px">diceware passphrases</h1>
       <hr />
     </div>
 
-    <div id="options" class="six columns">
-      <h3>1</h3>
+    <div id="generator" class="eight columns">
+      <h3>generator</h3>
       <form>
-        <p>I would like <input type="number" min="3" max="10" value="5" name="words" id="words" /> words in my passphrase.</p>
-        <p>
-        <input type="checkbox" name="special" id="special" /><label for="special">Insert a special character.</label>
-        </p>
-        <p><span id="entropy">44</span> bits of entropy</p>
+        <p>I would like <span data-bind="text: numWords"></span> words in my passphrase.</p><input type="range" min="3" max="9" value="5" data-bind="value: numWords" />
+        <p>Estimated <span data-bind="text: entropy"></span> bits of entropy.</p>
       </form>
+      <button data-bind="click: generatePassphrase">Generate!</button>
+      <pre data-bind="text: passphrase"></pre>
     </div>
 
-    <div id="button" class="four columns">
-      <h3>2</h3>
-      <button>Generate!</button>
-    </div>
-
-    <div id="results" class="six columns">
-      <h3>3</h3>
-      <pre>some words go here</pre>
-    </div>
-
-    <div id="faq" class="sixteen columns">
+    <div id="faq" class="eight columns">
       <h3>faq</h3>
-      <dl>
-        <dt>Wait, diceware told me not to use a computer for this!</dt>
-        <dd>blah blah blah</dd>
-      </dl>
+      <div>
+        <details>
+          <summary>Wait, diceware told me not to use a computer for this!</summary>
+          <p>blah blah blah</p>
+        </details>
+        <details>
+          <summary>Another question.</summary>
+          <p>blah blah blah</p>
+        </details>
+      </div>
     </div>
   </div>
+
+  <iframe id="random"></iframe>
+
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+  <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+  <script defer src="js/knockout-2.0.0.js"></script>
+  <script defer src="js/diceware8k.js"></script>
+  <script defer src="js/script.js"></script>
 </body>
 </html>
