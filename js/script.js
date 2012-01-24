@@ -1,3 +1,15 @@
+// Fisher-Yates Shuffle - O(n) complexity in place array shuffle.
+function shuffle(arr) {
+  var len = arr.length;
+  var t;
+  for (var i = len - 1, j; i > 0; i--) {
+    j = Math.floor(Math.random() * i);
+    t = arr[j];
+    arr[j] = arr[i];
+    arr[i] = t;
+  }
+}
+
 function viewModel() {
   this.numWords = ko.observable(5);
   this.passphrase = ko.observable("");
@@ -7,16 +19,15 @@ function viewModel() {
   }, this);
 
   this.generatePassphrase = function() {
-    var numInts = this.numWords();
     var words = [];
-    $('#random').attr('src', 'https://www.random.org/integers/?num=' + numInts
-      + '&min=0&max=8191&col=' + numInts + '&format=plain&rnd=new&base=10');
-    //for (var i = 0; i < numInts; i++) {
-    //  words[i] = dicewords8k[rnd];
-    //}
-    //this.passphrase(data);
+    for (var i = 0; i < this.numWords(); i++) {
+      words[i] = dicewords8k[Math.floor(Math.random()*8192)];
+    }
+    this.passphrase(words.join(' '));
   };
 }
 
-ko.applyBindings(new viewModel());
-
+$(document).ready(function () {
+  ko.applyBindings(new viewModel());
+  shuffle(dicewords8k);
+});
